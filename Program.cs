@@ -4,7 +4,8 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        string textoOriginal = "Text to encrypt";
+        string sampleText = "Text to encrypt";
+        string textToEncypt = args.Length > 0 ? args[0] : sampleText;
 
         using (Aes aesAlg = Aes.Create())
         {
@@ -20,7 +21,7 @@ internal class Program
                 {
                     using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
                     {
-                        swEncrypt.Write(textoOriginal);
+                        swEncrypt.Write(textToEncypt);
                     }
                 }
 
@@ -28,9 +29,10 @@ internal class Program
                 string EncValue = Convert.ToBase64String(EncryptrdText);
                 string Key = Convert.ToBase64String(aesAlg.Key);
                 string IV = Convert.ToBase64String(aesAlg.IV);
-                Console.WriteLine("Encripted Value: " + EncValue);
-                Console.WriteLine("Generated Key: " + Key);
-                Console.WriteLine("IV: " + IV);
+                Console.WriteLine("Plain value: {0}", textToEncypt);
+                Console.WriteLine("Encripted Value: {0}", EncValue);
+                Console.WriteLine("Generated Key: {0}", Key);
+                Console.WriteLine("IV: {0}", IV);
             }
         }
 
