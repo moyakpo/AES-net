@@ -29,10 +29,12 @@ internal class Program
                 string EncValue = Convert.ToBase64String(EncryptrdText);
                 string Key = Convert.ToBase64String(aesAlg.Key);
                 string IV = Convert.ToBase64String(aesAlg.IV);
+                
+                Console.WriteLine("");
                 Console.WriteLine("Plain value: {0}", textToEncypt);
-                Console.WriteLine("Encripted Value: {0}", EncValue);
-                Console.WriteLine("Generated Key: {0}", Key);
-                Console.WriteLine("IV: {0}", IV);
+                Console.WriteLine("Generated Key (Key1): {0}", Key);
+                Console.WriteLine("IV (Key2): {0}", IV);
+                Console.WriteLine("Encripted Value (Key3): {0}", EncValue);
             }
         }
 
